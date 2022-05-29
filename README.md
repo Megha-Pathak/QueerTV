@@ -1,3 +1,5 @@
-## Video Library Backend
+## QueerTV | Educational Video Library
 
-This folder contains the Mock Backend created for Video Library App. It contains different API end-points and database configuration for building Video Library; so that you can focus on building Frontend.
+QueerTV is an educational open sourced video library that acts like a centralized repository of resources that help it's users in educating themselves and exploring about Gender and Sexuality.
+
+![Progress](https://img.shields.io/badge/WIP-Project%20in%20Progress-yellow)
