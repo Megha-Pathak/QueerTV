@@ -1,11 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import "./HomeSection.css";
 
-export const Banner = ({ banner }) => {
+export const HomeSection = ({ banner }) => {
   const { title, description, imageUrl, cta, ctaLink } = banner;
-
-  const navigate = useNavigate();
 
   return (
     <div className="banner">
