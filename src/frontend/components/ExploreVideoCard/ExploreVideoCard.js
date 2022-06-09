@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
-import { CardDropdown } from "../CardDropdown/CardDropdown";
+import { MoreModal } from "../MoreModal/MoreModal";
 import { nFormatter } from "../../utils";
 import "./ExploreVideoCard.css";
 
@@ -25,7 +25,7 @@ export const ExploreVideoCard = ({ video }) => {
       <div className="vertical-video-card-primary">
         <p className="vertical-video-card-title">{title}</p>
         <div className="vertical-video-card-more">
-          <CardDropdown
+          <MoreModal
             video={video}
             isDropdownMenuOpen={isDropdownMenuOpen}
             setIsDropdownMenuOpen={setIsDropdownMenuOpen}
