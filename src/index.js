@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { CombinedProvider } from "./frontend/provider";
 import { makeServer } from "./server";
 import { BrowserRouter } from "react-router-dom";
 import {
