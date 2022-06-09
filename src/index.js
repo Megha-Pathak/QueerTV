@@ -1,15 +1,43 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
 import App from "./App";
 import { makeServer } from "./server";
+import { BrowserRouter } from "react-router-dom";
+import {
+  AuthProvider,
+  CategoriesProvider,
+  FiltersProvider,
+  HistoryProvider,
+  LikesProvider,
+  SidebarProvider,
+  VideosProvider,
+  WatchLaterProvider,
+} from "../src/frontend/contexts";
 
 // Call make Server
 makeServer();
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <AuthProvider>
+        <SidebarProvider>
+          <VideosProvider>
+            <CategoriesProvider>
+              <FiltersProvider>
+                <LikesProvider>
+                  <WatchLaterProvider>
+                    <HistoryProvider>
+                      <App />
+                    </HistoryProvider>
+                  </WatchLaterProvider>
+                </LikesProvider>
+              </FiltersProvider>
+            </CategoriesProvider>
+          </VideosProvider>
+        </SidebarProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
