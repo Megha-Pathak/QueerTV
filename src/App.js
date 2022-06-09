@@ -1,16 +1,8 @@
 import "./App.css";
-import { Header, Main, Sidebar } from "./frontend/layouts";
 
 function App() {
-  return (
-    <div className="app">
-      <Header />
-      <div className="app-content">
-        <Sidebar />
-        <Main />
-      </div>
-    </div>
-  );
+  return <div className="app">hello world</div>;
+
 }
 
 export default App;
