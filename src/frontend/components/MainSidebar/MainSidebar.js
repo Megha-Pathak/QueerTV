@@ -5,7 +5,7 @@ import { useOnClickOutside, useWindowSize } from "../../hooks";
 import "./MainSidebar.css";
 
 export const MainSidebar = () => {
-  const MainSidebarRef = useRef();
+  const mainSidebarRef = useRef();
 
   const sidebarLinkClass = ({ isActive }) =>
     isActive ? "expanded-sidebar-link active-link" : "expanded-sidebar-link";
@@ -13,7 +13,7 @@ export const MainSidebar = () => {
   const { setShowSidebar } = useSidebar();
   const windowSize = useWindowSize();
 
-  useOnClickOutside(MainSidebarRef, () => {
+  useOnClickOutside(mainSidebarRef, () => {
     if (windowSize.width <= 950) {
       setShowSidebar(false);
     }
@@ -26,7 +26,7 @@ export const MainSidebar = () => {
   };
 
   return (
-    <div ref={MainSidebarRef} className="expanded-sidebar">
+    <div ref={mainSidebarRef} className="expanded-sidebar">
       <header className="sidebar-header">
         <section>
           <button className="nav-menu" onClick={() => setShowSidebar(false)}>
