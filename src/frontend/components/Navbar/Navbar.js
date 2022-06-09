@@ -42,8 +42,8 @@ export const Navbar = () => {
             <img
               src={"/assets/logo.png"}
               className="nav-brand-logo"
-              title="  QueerTV"
-              alt="  QueerTV"
+              title="QueerTV"
+              alt="QueerTV"
             />
           </NavLink>
         </section>
