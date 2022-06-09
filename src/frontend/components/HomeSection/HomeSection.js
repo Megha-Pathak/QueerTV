@@ -15,7 +15,6 @@ export const HomeSection = ({ banner }) => {
             onClick={() => (window.location.href = `${ctaLink}`)}
           >
             {cta}
-            {console.log(ctaLink)}
           </button>
         </div>
       </section>
