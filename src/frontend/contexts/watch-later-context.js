@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { SET_WATCH_LATER } from "../constants";
+import { SET_WATCH_LATER } from "../constants/queer-constants";
 import { watchLaterReducer } from "../reducers";
 import { getWatchLaterService } from "../services";
 import { useAuth } from "./auth-context";

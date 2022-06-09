@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { SET_HISTORY } from "../constants";
+import { SET_HISTORY } from "../constants/queer-constants";
 import { historyReducer } from "../reducers";
 import { getHistoryService } from "../services";
 import { useAuth } from "./auth-context";

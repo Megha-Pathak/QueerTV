@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import { AUTH_DATA, AUTH_TOKEN } from "../constants";
+import { AUTH_DATA, AUTH_TOKEN } from "../constants/queer-constants";
 
 const AuthContext = createContext();
 

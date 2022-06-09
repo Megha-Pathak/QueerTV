@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer, useEffect } from "react";
-import { SET_LIKES } from "../constants";
+import { SET_LIKES } from "../constants/queer-constants";
 import { likesReducer } from "../reducers";
 import { getLikesService } from "../services";
 import { useAuth } from "./auth-context";
