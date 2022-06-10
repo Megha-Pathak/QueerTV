@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./NothingToShowPage.css";
+import "./EmptyUserActivityPage.css";
 
-export const NothingToShowPage = () => {
+export const EmptyUserActivityPage = () => {
   return (
-    <div className="nothing-to-show">
-      <div className="nothing-to-show-content">
-        <h2 className="nothing-to-show-title">Nothing to see here!</h2>
+    <div className="empty-user-activity">
+      <div className="empty-user-activity-content">
+        <h2 className="empty-user-activity-title">Nothing to see here!</h2>
         <img
-          className="nothing-to-show-img"
+          className="empty-user-activity-img"
           src={"/assets/nothingtoShow.svg"}
           alt="Empty!"
         />

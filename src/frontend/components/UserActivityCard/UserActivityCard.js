@@ -19,7 +19,7 @@ export const UserActivityCard = ({ video }) => {
       <img
         className="user-activity-card-img"
         src={`https://img.youtube.com/vi/${_id}/maxresdefault.jpg`}
-        alt=""
+        alt="youtube video"
       />
       <div className="user-activity-card-info">
         <div className="user-activity-card-primary">

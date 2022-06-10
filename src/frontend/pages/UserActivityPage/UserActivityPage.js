@@ -1,5 +1,5 @@
 import React from "react";
-import { NothingToShowPage } from "../NothingToShowPage/NothingToShowPage";
+import { EmptyUserActivityPage } from "../EmptyUserActivityPage/EmptyUserActivityPage";
 import { UserActivityCard } from "../../components";
 import { useHistory, useLikes, useWatchLater } from "../../contexts";
 import "./UserActivityPage.css";
@@ -17,7 +17,7 @@ export const UserActivityPage = () => {
       <div className="user-property-page-videos">
         {pathname === "/likes" &&
           (likes.length === 0 ? (
-            <NothingToShowPage />
+            <EmptyUserActivityPage />
           ) : (
             likes.map((likedVideo) => (
               <UserActivityCard key={likedVideo._id} video={likedVideo} />
@@ -25,7 +25,7 @@ export const UserActivityPage = () => {
           ))}
         {pathname === "/history" &&
           (history.length === 0 ? (
-            <NothingToShowPage />
+            <EmptyUserActivityPage />
           ) : (
             history.map((historyVideo) => (
               <UserActivityCard key={historyVideo._id} video={historyVideo} />
@@ -33,7 +33,7 @@ export const UserActivityPage = () => {
           ))}
         {pathname === "/watchlater" &&
           (watchLater.length === 0 ? (
-            <NothingToShowPage />
+            <EmptyUserActivityPage />
           ) : (
             watchLater.map((watchLaterVideo) => (
               <UserActivityCard
