@@ -1,0 +1,76 @@
+.user-activity-card {
+  cursor: pointer;
+  height: 5.5rem;
+  padding: 0.5rem;
+  display: flex;
+  border: 1px solid var(--color-background-accent-three);
+  box-shadow: var(--box-shadow);
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 0.5rem;
+}
+
+.user-activity-card:hover {
+  background-color: var(--primary-hover);
+}
+
+.user-activity-card-img {
+  height: 100%;
+}
+
+.user-activity-card-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.user-activity-card-primary {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.user-activity-card-title {
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.user-activity-card-secondary {
+  font-size: 0.875rem;
+  color: var(--color-accent-one);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.user-activity-card-secondary > span {
+  margin-right: 0.5rem;
+}
+
+.user-activity-card-more {
+  align-self: flex-start;
+  margin-left: auto;
+  visibility: hidden;
+}
+
+.user-activity-card:hover .user-activity-card-more {
+  visibility: visible;
+}
+
+@media screen and (max-width: 1024px) {
+  .user-activity-card {
+    padding: 0;
+  }
+
+  .user-activity-card-more {
+    visibility: visible;
+  }
+}
