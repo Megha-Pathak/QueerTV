@@ -9,7 +9,7 @@ export const EmptyUserActivityPage = () => {
         <h2 className="empty-user-activity-title">Nothing to see here!</h2>
         <img
           className="empty-user-activity-img"
-          src={"/assets/nothingtoShow.svg"}
+          src={"/assets/nothingToShow.svg"}
           alt="Empty!"
         />
         <Link className="btn btn-primary" to="/explore">
