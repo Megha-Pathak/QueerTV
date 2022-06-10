@@ -1,0 +1,24 @@
+.nothing-to-show {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nothing-to-show-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nothing-to-show-img {
+  width: 25rem;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 480px) {
+  .nothing-to-show {
+    margin-top: 5rem;
+  }
+}
