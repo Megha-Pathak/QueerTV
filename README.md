@@ -21,7 +21,7 @@ QueerTV is an educational open sourced video library that acts like a centralize
 
 ## Features
 
-Artium currently have the following features.
+QueerTV currently have the following features.
 
 - Home Page
 - Video Listing Page
