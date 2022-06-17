@@ -8,6 +8,7 @@ import {
   SignInPage,
   SignUpPage,
   SingleVideoPage,
+  PlaylistPage,
 } from "./../pages";
 import "./Router.css";
 
@@ -41,6 +42,14 @@ export const Router = () => {
           element={
             <RedirectToAuth>
               <UserActivityPage />
+            </RedirectToAuth>
+          }
+        />
+        <Route
+          path="/playlists/:playlistId"
+          element={
+            <RedirectToAuth>
+              <PlaylistPage />
             </RedirectToAuth>
           }
         />

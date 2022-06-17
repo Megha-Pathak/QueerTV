@@ -6,13 +6,20 @@ import {
   SET_PLAYLIST,
   SET_WATCH_LATER,
 } from "../../constants/queer-constants";
-import { useAuth, useHistory, useLikes, useWatchLater } from "../../contexts";
+import {
+  useAuth,
+  useHistory,
+  useLikes,
+  useWatchLater,
+  usePlaylists,
+} from "../../contexts";
 import { useOnClickOutside } from "../../hooks";
 import {
   addWatchLaterService,
   removeHistoryService,
   removeLikeService,
   removeWatchLaterService,
+  removePlaylistService,
 } from "../../services";
 import "./MoreModal.css";
 
@@ -20,15 +27,18 @@ export const MoreModal = ({
   video,
   isDropdownMenuOpen,
   setIsDropdownMenuOpen,
+  showPlaylistModal,
 }) => {
   const { auth } = useAuth();
   const { watchLater, dispatchWatchLater } = useWatchLater();
   const { dispatchHistory } = useHistory();
   const { dispatchLikes } = useLikes();
+  const { dispatchPlaylists } = usePlaylists();
 
   const dropdownMenuRef = useRef();
 
   const { pathname } = useLocation();
+  const { playlistId } = useParams();
 
   useOnClickOutside(dropdownMenuRef, () => setIsDropdownMenuOpen(false));
 
@@ -60,6 +70,12 @@ export const MoreModal = ({
         payload: addWatchLaterResponse,
       });
     }
+  };
+
+  const saveToPlaylistHandler = (e) => {
+    e.stopPropagation();
+    showPlaylistModal();
+    setIsDropdownMenuOpen(false);
   };
 
   const removeHistoryHandler = async (e) => {
@@ -115,6 +131,10 @@ export const MoreModal = ({
                   Save to Watch Later
                 </li>
               )}
+              <li onClick={saveToPlaylistHandler}>
+                <span className="material-icons">playlist_add</span>
+                Save to Playlist
+              </li>
               {pathname === "/history" && (
                 <li onClick={removeHistoryHandler}>
                   <span className="material-icons-outlined">delete</span>

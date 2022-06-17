@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Moment from "react-moment";
 import { MoreModal } from "../MoreModal/MoreModal";
+import { PlaylistsModal } from "../PlaylistsModal/PlaylistsModal";
 import { nFormatter } from "../../utils";
 import "./ExploreVideoCard.css";
 
 export const ExploreVideoCard = ({ video }) => {
   const { _id, title, views, uploadedAt } = video;
   const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
+  const [showPlaylistsModal, setShowPlaylistsModal] = useState(false);
 
   const navigate = useNavigate();
 
@@ -29,6 +31,7 @@ export const ExploreVideoCard = ({ video }) => {
             video={video}
             isDropdownMenuOpen={isDropdownMenuOpen}
             setIsDropdownMenuOpen={setIsDropdownMenuOpen}
+            showPlaylistModal={() => setShowPlaylistsModal(true)}
           />
         </div>
       </div>
@@ -41,6 +44,12 @@ export const ExploreVideoCard = ({ video }) => {
         </span>
         <Moment fromNow>{uploadedAt}</Moment>
       </div>
+      {showPlaylistsModal && (
+        <PlaylistsModal
+          video={video}
+          closePlaylistModal={() => setShowPlaylistsModal(false)}
+        />
+      )}
     </div>
   );
 };

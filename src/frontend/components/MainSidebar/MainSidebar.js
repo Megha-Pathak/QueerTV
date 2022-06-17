@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
-import { useSidebar } from "../../contexts";
+import { useSidebar, usePlaylists } from "../../contexts";
 import { useOnClickOutside, useWindowSize } from "../../hooks";
 import "./MainSidebar.css";
 
@@ -11,6 +11,8 @@ export const MainSidebar = () => {
     isActive ? "expanded-sidebar-link active-link" : "expanded-sidebar-link";
 
   const { setShowSidebar } = useSidebar();
+  const { playlists } = usePlaylists();
+
   const windowSize = useWindowSize();
 
   useOnClickOutside(mainSidebarRef, () => {
@@ -81,6 +83,17 @@ export const MainSidebar = () => {
         <span className="material-icons-outlined sidebar-icon">thumb_up</span>
         <span className="sidebar-option">Liked Videos</span>
       </NavLink>
+      {playlists.map((playlist) => (
+        <NavLink
+          key={playlist._id}
+          to={`/playlists/${playlist._id}`}
+          className={sidebarLinkClass}
+          onClick={linkClickHandler}
+        >
+          <span className="material-icons sidebar-icon">playlist_play</span>
+          <span className="sidebar-option">{playlist.title}</span>
+        </NavLink>
+      ))}
     </div>
   );
 };

@@ -8,3 +8,4 @@ export { ToggledSidebar } from "./ToggledSidebar/ToggledSidebar";
 export { Categories } from "./Categories/Categories";
 export { ExploreVideoCard } from "./ExploreVideoCard/ExploreVideoCard";
 export { RedirectToAuth } from "./RedirectToAuth/RedirectToAuth";
+export { PlaylistsModal } from "./PlaylistsModal/PlaylistsModal";

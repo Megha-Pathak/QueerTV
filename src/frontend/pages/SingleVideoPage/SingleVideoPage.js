@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ReactPlayer from "react-player/youtube";
 import Moment from "react-moment";
+import { PlaylistsModal } from "../../components";
 import {
   useAuth,
   useHistory,
@@ -28,6 +29,7 @@ import "./SingleVideoPage.css";
 export const SingleVideoPage = () => {
   const singleVideoPageRef = useRef();
   const [singleVideoPageWidth, setSingleVideoPageWidth] = useState();
+  const [showPlaylistsModal, setShowPlaylistsModal] = useState(false);
 
   const { videoId } = useParams();
   const navigate = useNavigate();
@@ -118,6 +120,9 @@ export const SingleVideoPage = () => {
     }
   };
 
+  const addPlaylistHandler = () => {
+    setShowPlaylistsModal(true);
+  };
   return (
     <div
       ref={singleVideoPageRef}
@@ -211,10 +216,31 @@ export const SingleVideoPage = () => {
                   </span>
                 </button>
               )}
+              <button
+                className="video-action-button"
+                onClick={() =>
+                  auth.status
+                    ? addPlaylistHandler()
+                    : navigate("/signin", { state: { from: location } })
+                }
+              >
+                <span
+                  className="material-icons video-icon"
+                  title="Add to a playlist"
+                >
+                  playlist_add
+                </span>
+              </button>
             </div>
           </div>
         </div>
       </div>
+      {showPlaylistsModal && (
+        <PlaylistsModal
+          video={currentVideo}
+          closePlaylistModal={() => setShowPlaylistsModal(false)}
+        />
+      )}
     </div>
   );
 };
