@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useAuth, usePlaylists } from "../../contexts";
 import { removePlaylistService } from "../../services";
 import { SET_PLAYLISTS } from "../../constants/queer-constants";
+import { UserActivityCard } from "../../components";
 
 export const PlaylistPage = () => {
   const { playlistId } = useParams();
@@ -54,6 +55,11 @@ export const PlaylistPage = () => {
         >
           Delete Playlist
         </button>
+      </div>
+      <div className="user-property-page-videos">
+        {currentPlaylist?.videos?.map((playlistVideo) => (
+          <UserActivityCard key={playlistVideo._id} video={playlistVideo} />
+        ))}
       </div>
     </div>
   );

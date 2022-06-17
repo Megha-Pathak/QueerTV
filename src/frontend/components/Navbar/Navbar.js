@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { useAuth, useSidebar } from "../../contexts";
-import { Search } from "../Search/Search";
 import { AUTH_DATA, AUTH_TOKEN } from "../../constants/queer-constants";
 import "./Navbar.css";
 
@@ -47,9 +46,7 @@ export const Navbar = () => {
             />
           </NavLink>
         </section>
-        <section className="nav-search">
-          <Search />
-        </section>
+
         {!auth.status && (
           <section className="nav-authorization">
             <button
