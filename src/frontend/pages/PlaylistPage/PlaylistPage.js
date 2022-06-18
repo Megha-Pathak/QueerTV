@@ -27,6 +27,7 @@ export const PlaylistPage = () => {
         type: SET_PLAYLISTS,
         payload: removePlaylistResponse,
       });
+      toast.success("Video successfully removed from Playlist");
     }
   };
 

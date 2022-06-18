@@ -33,6 +33,7 @@ export const PlaylistsModal = ({ video, closePlaylistModal }) => {
     if (addPlaylistResponse !== undefined) {
       dispatchPlaylists({ type: SET_PLAYLISTS, payload: addPlaylistResponse });
       setNewPlaylist({ title: "", description: "" });
+      toast.success("Playlist successfully created");
     }
   };
 
@@ -47,6 +48,7 @@ export const PlaylistsModal = ({ video, closePlaylistModal }) => {
         type: SET_PLAYLIST,
         payload: addVideoToPlaylistResponse,
       });
+      toast.success("Video successfully added to Playlist");
     }
   };
 
@@ -59,6 +61,7 @@ export const PlaylistsModal = ({ video, closePlaylistModal }) => {
         type: SET_PLAYLIST,
         payload: removeVideoFromPlaylistResponse,
       });
+      toast.success("Video successfully removed from Playlist");
     }
   };
 

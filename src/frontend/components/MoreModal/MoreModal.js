@@ -58,6 +58,7 @@ export const MoreModal = ({
         type: SET_WATCH_LATER,
         payload: removeWatchLaterResponse,
       });
+      toast.success("Video successfully removed from Watch Later");
     }
   };
 
@@ -69,6 +70,7 @@ export const MoreModal = ({
         type: SET_WATCH_LATER,
         payload: addWatchLaterResponse,
       });
+      toast.success("Video successfully added to Watch Later");
     }
   };
 
@@ -86,6 +88,7 @@ export const MoreModal = ({
     );
     if (removeHistoryResponse !== undefined) {
       dispatchHistory({ type: SET_HISTORY, payload: removeHistoryResponse });
+      toast.success("Video successfully removed from History");
     }
   };
 
@@ -94,6 +97,7 @@ export const MoreModal = ({
     const removeLikeResponse = await removeLikeService(auth.token, video._id);
     if (removeLikeResponse !== undefined) {
       dispatchLikes({ type: SET_LIKES, payload: removeLikeResponse });
+      toast.success("Video successfully removed from Liked");
     }
   };
 
@@ -106,6 +110,7 @@ export const MoreModal = ({
         type: SET_PLAYLIST,
         payload: removeVideoFromPlaylistResponse,
       });
+      toast.success("Video successfully removed from Playlist");
     }
   };
 

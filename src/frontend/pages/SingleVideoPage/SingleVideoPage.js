@@ -24,6 +24,7 @@ import {
   SET_LIKES,
   SET_WATCH_LATER,
 } from "../../constants/queer-constants";
+import { toast } from "react-toastify";
 import "./SingleVideoPage.css";
 
 export const SingleVideoPage = () => {
@@ -59,8 +60,10 @@ export const SingleVideoPage = () => {
 
   const addLikeHandler = async () => {
     const addLikeResponse = await addLikeService(auth.token, currentVideo);
+
     if (addLikeResponse !== undefined) {
       dispatchLikes({ type: SET_LIKES, payload: addLikeResponse });
+      toast.success("Video successfully liked");
     }
   };
 
@@ -68,6 +71,7 @@ export const SingleVideoPage = () => {
     const removeLikeResponse = await removeLikeService(auth.token, videoId);
     if (removeLikeResponse !== undefined) {
       dispatchLikes({ type: SET_LIKES, payload: removeLikeResponse });
+      toast.success("Video successfully removed from liked");
     }
   };
 
@@ -81,6 +85,7 @@ export const SingleVideoPage = () => {
         type: SET_WATCH_LATER,
         payload: addWatchLaterResponse,
       });
+      toast.success("Video successfully added to Watch Later");
     }
   };
 
@@ -94,6 +99,7 @@ export const SingleVideoPage = () => {
         type: SET_WATCH_LATER,
         payload: removeWatchLaterResponse,
       });
+      toast.success("Video successfully removed from Watch Later");
     }
   };
 
@@ -104,6 +110,7 @@ export const SingleVideoPage = () => {
     );
     if (removeHistoryResponse !== undefined) {
       dispatchHistory({ type: SET_HISTORY, payload: removeHistoryResponse });
+      toast.success("Video successfully removed from history");
     }
   };
 
