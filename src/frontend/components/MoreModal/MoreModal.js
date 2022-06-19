@@ -6,13 +6,20 @@ import {
   SET_PLAYLIST,
   SET_WATCH_LATER,
 } from "../../constants/queer-constants";
-import { useAuth, useHistory, useLikes, useWatchLater } from "../../contexts";
+import {
+  useAuth,
+  useHistory,
+  useLikes,
+  useWatchLater,
+  usePlaylists,
+} from "../../contexts";
 import { useOnClickOutside } from "../../hooks";
 import {
   addWatchLaterService,
   removeHistoryService,
   removeLikeService,
   removeWatchLaterService,
+  removePlaylistService,
 } from "../../services";
 import "./MoreModal.css";
 
@@ -20,15 +27,18 @@ export const MoreModal = ({
   video,
   isDropdownMenuOpen,
   setIsDropdownMenuOpen,
+  showPlaylistModal,
 }) => {
   const { auth } = useAuth();
   const { watchLater, dispatchWatchLater } = useWatchLater();
   const { dispatchHistory } = useHistory();
   const { dispatchLikes } = useLikes();
+  const { dispatchPlaylists } = usePlaylists();
 
   const dropdownMenuRef = useRef();
 
   const { pathname } = useLocation();
+  const { playlistId } = useParams();
 
   useOnClickOutside(dropdownMenuRef, () => setIsDropdownMenuOpen(false));
 
@@ -48,6 +58,7 @@ export const MoreModal = ({
         type: SET_WATCH_LATER,
         payload: removeWatchLaterResponse,
       });
+      toast.success("Video successfully removed from Watch Later");
     }
   };
 
@@ -59,7 +70,14 @@ export const MoreModal = ({
         type: SET_WATCH_LATER,
         payload: addWatchLaterResponse,
       });
+      toast.success("Video successfully added to Watch Later");
     }
+  };
+
+  const saveToPlaylistHandler = (e) => {
+    e.stopPropagation();
+    showPlaylistModal();
+    setIsDropdownMenuOpen(false);
   };
 
   const removeHistoryHandler = async (e) => {
@@ -70,6 +88,7 @@ export const MoreModal = ({
     );
     if (removeHistoryResponse !== undefined) {
       dispatchHistory({ type: SET_HISTORY, payload: removeHistoryResponse });
+      toast.success("Video successfully removed from History");
     }
   };
 
@@ -78,6 +97,7 @@ export const MoreModal = ({
     const removeLikeResponse = await removeLikeService(auth.token, video._id);
     if (removeLikeResponse !== undefined) {
       dispatchLikes({ type: SET_LIKES, payload: removeLikeResponse });
+      toast.success("Video successfully removed from Liked");
     }
   };
 
@@ -90,6 +110,7 @@ export const MoreModal = ({
         type: SET_PLAYLIST,
         payload: removeVideoFromPlaylistResponse,
       });
+      toast.success("Video successfully removed from Playlist");
     }
   };
 
@@ -115,6 +136,10 @@ export const MoreModal = ({
                   Save to Watch Later
                 </li>
               )}
+              <li onClick={saveToPlaylistHandler}>
+                <span className="material-icons">playlist_add</span>
+                Save to Playlist
+              </li>
               {pathname === "/history" && (
                 <li onClick={removeHistoryHandler}>
                   <span className="material-icons-outlined">delete</span>

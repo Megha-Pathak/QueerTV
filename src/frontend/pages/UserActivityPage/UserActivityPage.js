@@ -3,6 +3,7 @@ import { EmptyUserActivityPage } from "../EmptyUserActivityPage/EmptyUserActivit
 import { UserActivityCard } from "../../components";
 import { useHistory, useLikes, useWatchLater } from "../../contexts";
 import "./UserActivityPage.css";
+import { removeAllHistoryService } from "../../services";
 import { useLocation } from "react-router-dom";
 
 export const UserActivityPage = () => {
@@ -12,8 +13,23 @@ export const UserActivityPage = () => {
   const location = useLocation();
   const { pathname } = location;
 
+  const removeAllHistoryHandler = async () => {
+    const removeAllHistoryResponse = await removeAllHistoryService(auth.token);
+    if (removeAllHistoryResponse !== undefined) {
+      dispatchHistory({ type: SET_HISTORY, payload: removeAllHistoryResponse });
+    }
+  };
+
   return (
     <div className="user-property-page">
+      {pathname === "/history" && (
+        <button
+          className="btn btn-primary user-property-page-cover-action"
+          onClick={removeAllHistoryHandler}
+        >
+          Clear All
+        </button>
+      )}
       <div className="user-property-page-videos">
         {pathname === "/likes" &&
           (likes.length === 0 ? (

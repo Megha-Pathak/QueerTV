@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { usePlaylists } from "../../contexts";
 import "./ToggledSidebar.css";
 
 export const ToggledSidebar = () => {
+  const { playlists } = usePlaylists();
+
   const sidebarLinkClass = ({ isActive }) =>
     isActive ? "shrinked-sidebar-link active-link" : "shrinked-sidebar-link";
 
@@ -39,6 +42,17 @@ export const ToggledSidebar = () => {
           thumb_up
         </span>
       </NavLink>
+      {playlists.map((playlist) => (
+        <NavLink
+          key={playlist._id}
+          to={`/playlists/${playlist._id}`}
+          className={sidebarLinkClass}
+        >
+          <span title={playlist.title} className="material-icons sidebar-icon">
+            playlist_play
+          </span>
+        </NavLink>
+      ))}
     </div>
   );
 };

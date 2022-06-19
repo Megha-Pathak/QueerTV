@@ -6,3 +6,4 @@ export { FiltersProvider, useFilters } from "./filters-context";
 export { LikesProvider, useLikes } from "./likes-context";
 export { WatchLaterProvider, useWatchLater } from "./watch-later-context";
 export { HistoryProvider, useHistory } from "./history-context";
+export { PlaylistsProvider, usePlaylists } from "./playlist-context";
